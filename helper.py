@@ -1,5 +1,6 @@
 import os
 
+IMAGE_RES = 150
 
 def get_subdirectory(sub_directory: str) -> str:
     """
