@@ -83,3 +83,10 @@ code .
 ## Step 9: Run Your Project
 
 You are now ready to run your project using the appropriate commands or scripts.
+
+## Acknowledgements
+
+- [@grassknoted/aslalphabet_akash nagaraj_2018](https://www.kaggle.com/grassknoted/aslalphabet_akash%20nagaraj_2018)
+- Title: ASL Alphabet
+- URL: [https://www.kaggle.com/dsv/29550](https://www.kaggle.com/dsv/29550)
+- DOI: 10.34740/KAGGLE/DSV/29550
