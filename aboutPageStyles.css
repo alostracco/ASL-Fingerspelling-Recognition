@@ -1,0 +1,34 @@
+/* styles.css */
+
+
+/* Top section with the logo and menu */
+.menu {
+    display: flex;
+    justify-content: flex-start;
+}
+.menu-item {
+    margin:0 10px
+}
+img[src="download.jpg"] {
+    width: 100%;
+    max-width: 300px;
+}
+table {
+    max-width: 500px;
+    width:100px;
+    text-align:right;
+}
+table td {
+    padding:8px;
+}
+/* targets all <button> elements with the class 'menu-button'*/
+.menu button.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+}
+.menu button.menu-button:hover {
+    color: lightblue;
+}
