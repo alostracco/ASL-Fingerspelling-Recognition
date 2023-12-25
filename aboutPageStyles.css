@@ -32,6 +32,7 @@ table td {
 .menu button.menu-button:hover {
     color: lightblue;
 }
+
 .context {
     position: relative;
     background-color: rgba(241,235,233,0.65);
