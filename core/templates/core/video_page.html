@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Video Page{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Video Page</h1>
+    <img id="video-stream" src="https://via.placeholder.com/300x300" alt="Video Stream">
+    <button onclick="toggleVideo()">Toggle Video</button>
+    {% load static %}
+    <script>
+        const videoFeedUrl = "{% url 'video_feed' %}";
+    </script>
+    <script src="{% static 'core/scripts/main.js' %}"></script>
+{% endblock %}
