@@ -12,7 +12,7 @@ RECTANGLE_SIZE = 30
 
 
 def frame_generator(model):
-    video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW) # remove dshow for a linux based server
 
     # Initialize mediapipe hands
     mp_hands = mp.solutions.hands
