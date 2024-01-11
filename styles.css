@@ -1,0 +1,33 @@
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 7%;
+    justify-content: flex-end;
+}
+
+img[src="download.jpg"] {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: 10px;
+
+    /*width: auto used to resize image proportionally*/
+    height: 100px;
+    width: auto;
+}
+
+.menu-button {
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu-button:last-child {
+    margin-right: 30px;
+}
+
+.menu-button:hover {
+    color: #198fd3;
+}

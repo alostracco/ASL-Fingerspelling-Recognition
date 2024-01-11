@@ -1,84 +1,59 @@
-/* styles.css */
+/* homePageStyles.css */
 
 
 /* Top section with the logo and menu */
-.menu {
-    display: flex;
-    justify-content: flex-start;
-}
-.menu-item {
-    margin:0 10px
-}
-img[src="download.jpg"] {
-    width: 100%;
-    max-width: 300px;
-}
-table {
-    max-width: 500px;
-    width:100px;
-    text-align:right;
-}
-table td {
-    padding:8px;
-}
-/* targets all <button> elements with the class 'menu-button'*/
-.menu button.menu-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-}
-.menu button.menu-button:hover {
-    color: lightblue;
-}
 
 /* Container for main website display */
-
 .container {
     position: relative;
     text-align: center;
-    background-color: rgba(255,255,255,0.65);
+    background-color: rgba(255, 255, 255, 0.65);
     height: 100vh;
     display: flex;
     justify-content: center;
 
 }
+
 .container img[src="background.jpg"] {
     opacity: 0.65;
     position: absolute;
     width: 100%;
     object-fit: cover;
 }
+
 .subtitle {
     position: absolute;
     bottom: 8px;
     top: 55%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     object-fit: contain;
 }
+
 .title {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     font-weight: bold;
     font-size: 4em;
     text-align: center;
 }
+
 .container button.cta-button {
     position: absolute;
     top: 70%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     background-color: aliceblue;
     padding: 16px 28px;
     border-radius: 12px;
 }
-.container button.cta-button:hover{
+
+.container button.cta-button:hover {
     background-color: lightblue
 }
+
 button {
     margin: 0;
     padding: 0;
