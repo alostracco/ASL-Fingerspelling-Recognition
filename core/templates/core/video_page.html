@@ -1,15 +1,36 @@
 {% extends 'core/base.html' %}
 
 {% block title %}Video Page{% endblock %}
-
+{% block additional_head %}
+<!-- Add this line at the beginning -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/styles/converterStyles.css' %}" />
+{% endblock %}
 {% block content %}
     <h1>Welcome to the Video Page</h1>
-    <img id="video-stream" src="https://via.placeholder.com/300x300" alt="Video Stream">
     <button onclick="toggleVideo()">Toggle Video</button>
     {% load static %}
     <script>
         const videoFeedUrl = "{% url 'video_feed' %}";
     </script>
-    <h2>hello</h2>
     <script src="{% static 'core/scripts/main.js' %}"></script>
+
+    <div class="menu">
+        <img onclick="redirectToHome()" src="download.jpg">
+        <svg class="curve" xmlns="http://www.w3.org/2000/svg" width="146" height="97" viewBox="0 0 146 97" fill="none">
+            <path d="M145.88 96C57.5925 91.2 13.1735 28.6667 2 -2" stroke="black" stroke-width="2"/>
+        </svg>
+        <a class="menu-button" type="button" onclick="redirectToHome()">Home</a>
+        <a class="menu-button" type="button" onclick="redirectToConverter()">Converter</a>
+        <a class="menu-button" type="button" onclick="redirectToAbout()">About</a>
+        <a class="menu-button" type="button" onclick="redirectToContact()">Contact</a>
+    </div>
+    
+    <div class="content">
+    
+        <div class="webcam">
+    
+        </div>
+    
+    </div>
 {% endblock %}
