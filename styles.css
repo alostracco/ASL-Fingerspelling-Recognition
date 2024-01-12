@@ -1,8 +1,28 @@
 .menu {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 7%;
     justify-content: flex-end;
+}
+
+.menu::before {
+    position: absolute;
+    content: "";
+    width: 46%;
+    height: 2px; /* Adjust the height of the underline */
+    background-color: #000; /* Adjust the color of the underline */
+    bottom: 0; /* Adjust the distance from the text */
+}
+
+.curve {
+    position: absolute;
+    z-index: 10;
+    flex-shrink: 0;
+    justify-self: flex-end;
+    right: 46%;
+    bottom: 0;
+
 }
 
 img[src="download.jpg"] {
@@ -11,18 +31,20 @@ img[src="download.jpg"] {
     margin-left: 10px;
 
     /*width: auto used to resize image proportionally*/
-    height: 100px;
+    height: 80px;
     width: auto;
+    cursor: pointer;
 }
 
 .menu-button {
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1.4em;
     font-weight: bold;
     font-family: sans-serif;
     margin-top: auto;
     margin-bottom: auto;
 }
+
 
 .menu-button:last-child {
     margin-right: 30px;

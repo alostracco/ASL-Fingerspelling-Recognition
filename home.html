@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASL To Text</title>
+    <title>ASL To Text | Home</title>
     <link rel="stylesheet" href="homePageStyles.css">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
@@ -11,18 +11,22 @@
 </head>
 <body>
 <div class="menu">
-    <img src="download.jpg">
+    <img onclick="redirectToHome()" src="download.jpg">
+    <svg class="curve" xmlns="http://www.w3.org/2000/svg" width="146" height="97" viewBox="0 0 146 97" fill="none">
+        <path d="M145.88 96C57.5925 91.2 13.1735 28.6667 2 -2" stroke="black" stroke-width="2"/>
+    </svg>
     <a class="menu-button" type="button" onclick="redirectToHome()">Home</a>
     <a class="menu-button" type="button" onclick="redirectToConverter()">Converter</a>
     <a class="menu-button" type="button" onclick="redirectToAbout()">About</a>
     <a class="menu-button" type="button" onclick="redirectToContact()">Contact</a>
+
 </div>
 
 <div class="container">
     <img src="background.jpg">
     <div class="title">Convert ASL to Text in Real Time</div>
     <div class="subtitle">An ASL to Text Webcam Translation Tool</div>
-    <button class="cta-button" type="button">Try it Now</button>
+    <button class="cta-button" type="button" onclick="redirectToConverter()">Try Now</button>
 </div>
 
 
