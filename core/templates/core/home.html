@@ -1,8 +1,20 @@
 {% extends 'core/base.html' %}
 
 {% block title %}Home Page{% endblock %}
-
+{% block additional_head %}
+<!-- Add this line at the beginning -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/styles/homePageStyles.css' %}" />
+{% endblock %}
 {% block content %}
+{% load static %}
+<div class="container">
+    <img src="{% static 'core/images/background.jpg' %}">
+    <div class="title">Convert ASL to Text in Real Time</div>
+    <div class="subtitle">An ASL to Text Webcam Translation Tool</div>
+    <button class="cta-button" type="button">Try it Now</button>
+</div>
+
     <h1>Welcome to the Home Page</h1>
     <a href="{% url 'video_page' %}">Go to Video Page</a>
 {% endblock %}

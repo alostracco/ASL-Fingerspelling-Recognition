@@ -1,9 +1,11 @@
 <!-- core/about_us.html -->
 
-{% extends 'core/base.html' %} {% block title %}About Us{% endblock %} {% load
-static %}
+{% extends 'core/base.html' %} {% block title %}About Us{% endblock %} 
+{% block additional_head %}
 <!-- Add this line at the beginning -->
-
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/styles/aboutPageStyles.css' %}" />
+{% endblock %}
 {% block content %} 
 {% load static %}
 <div class="context">

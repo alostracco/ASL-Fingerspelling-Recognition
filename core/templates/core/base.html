@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Your Website{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'core/styles/styles.css' %}" />
+    {% block additional_head %}{% endblock %} 
   </head>
 
   <body>
     <nav>
       <ul>
+        <img src="{% static 'core/images/download.jpg' %}">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="{% url 'video_page' %}">Video Page</a></li>
         <li><a href="{% url 'about_us' %}">About Us</a></li>
       </ul>
     </nav>
 
-    <main>{% block content %}{% endblock %}</main>
+    <main>{% block content %}{% load static %}
+    {% endblock %}</main>
 
     <footer>
       <p>&copy; 2024 Your Website. All rights reserved.</p>
