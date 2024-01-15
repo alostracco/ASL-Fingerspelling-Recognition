@@ -8,7 +8,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.regularizers import l2
 
-IMAGE_RES = 226
+#IMAGE_RES = 226
 
 
 class ASLModel:
@@ -18,6 +18,8 @@ class ASLModel:
     def __init__(self):
         lookup_path = os.path.join(settings.BASE_DIR, self.lookup_file)
         weights_path = os.path.join(settings.BASE_DIR, self.weights_file)
+
+        self.IMAGE_RES = 226
 
         #logging.info(f"Loading lookup file from: {lookup_path}")
         self.lookup = self.load_lookup(lookup_path)
@@ -31,7 +33,7 @@ class ASLModel:
 
     def load_model(self, weights_file):
         base_model = InceptionV3(
-            weights="imagenet", include_top=False, input_shape=(IMAGE_RES, IMAGE_RES, 3)
+            weights="imagenet", include_top=False, input_shape=(self.IMAGE_RES, self.IMAGE_RES, 3)
         )
 
         for layer in base_model.layers:

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +72,9 @@ TEMPLATES = [
 ]
 
 
-WSGI_APPLICATION = 'AslBackend.wsgi.application'
+#WSGI_APPLICATION = 'AslBackend.wsgi.application'
+# switch to asgi server for websockets
+ASGI_APPLICATION  = 'AslBackend.asgi.application'
 
 
 # Database

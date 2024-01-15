@@ -6,13 +6,18 @@ from django.views.decorators.gzip import gzip_page
 from django.shortcuts import render
 from .ASLModel import ASLModel
 import mediapipe as mp
+from channels.generic.websocket import AsyncWebsocketConsumer
+import base64
+
 
 IMAGE_RES = 226
 RECTANGLE_SIZE = 30
 
 
-def frame_generator(model):
-    video_capture = cv2.VideoCapture(0, cv2.CAP_DSHOW) # remove dshow for a linux based server
+def frame_generator(model: ASLModel):
+    video_capture = cv2.VideoCapture(
+        0, cv2.CAP_DSHOW
+    )  # remove dshow for a linux based server
 
     # Initialize mediapipe hands
     mp_hands = mp.solutions.hands
@@ -65,12 +70,14 @@ def frame_generator(model):
                         x_min - RECTANGLE_SIZE : x_max + RECTANGLE_SIZE,
                     ]
                     img_crop = Image.fromarray(np.uint8(img_crop))
-                    img_crop = img_crop.resize((IMAGE_RES, IMAGE_RES))
+                    img_crop = img_crop.resize((model.IMAGE_RES, model.IMAGE_RES))
                     img_crop = np.array(img_crop)
                     img_crop = np.fliplr(img_crop)
                     img_crop = np.array(img_crop[:, :, ::-1], dtype="float32")
                     img_crop = img_crop / 255
-                    img_crop = img_crop.reshape((1, IMAGE_RES, IMAGE_RES, 3))
+                    img_crop = img_crop.reshape(
+                        (1, model.IMAGE_RES, model.IMAGE_RES, 3)
+                    )
 
                     predict_test = model.model.predict(img_crop)
                     predicted_label = np.argmax(predict_test)
@@ -78,7 +85,7 @@ def frame_generator(model):
                     cv2.putText(
                         frame,
                         f"Label: {model.lookup[str(predicted_label)]}",
-                        #f"Label: {model.lookup.values()}",
+                        # f"Label: {model.lookup.values()}",
                         (20, 60),
                         cv2.FONT_HERSHEY_SIMPLEX,
                         0.9,

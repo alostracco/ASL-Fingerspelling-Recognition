@@ -1,36 +1,66 @@
 {% extends 'core/base.html' %}
 
-{% block title %}Video Page{% endblock %}
-{% block additional_head %}
-<!-- Add this line at the beginning -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'core/styles/converterStyles.css' %}" />
+{% block title %}
+  Video Page
 {% endblock %}
-{% block content %}
-    <h1>Welcome to the Video Page</h1>
-    <button onclick="toggleVideo()">Toggle Video</button>
-    {% load static %}
-    <script>
-        const videoFeedUrl = "{% url 'video_feed' %}";
-    </script>
-    <script src="{% static 'core/scripts/main.js' %}"></script>
 
-    <div class="menu">
-        <img onclick="redirectToHome()" src="download.jpg">
-        <svg class="curve" xmlns="http://www.w3.org/2000/svg" width="146" height="97" viewBox="0 0 146 97" fill="none">
-            <path d="M145.88 96C57.5925 91.2 13.1735 28.6667 2 -2" stroke="black" stroke-width="2"/>
-        </svg>
-        <a class="menu-button" type="button" onclick="redirectToHome()">Home</a>
-        <a class="menu-button" type="button" onclick="redirectToConverter()">Converter</a>
-        <a class="menu-button" type="button" onclick="redirectToAbout()">About</a>
-        <a class="menu-button" type="button" onclick="redirectToContact()">Contact</a>
+{% block content %}
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+    }
+    
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    #video {
+      display: none;
+    }
+    
+    #canvas {
+      display: none;
+    }
+    
+    #client {
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    
+    #modeButton {
+      width: 15vmin;
+      height: auto;
+      font-size: 4vmin;
+      border-radius: 25px; /* Rounded corners */
+      background: #4caf50; /* Green color */
+      color: #fff; /* White text */
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s ease-in-out;
+      border: none; /* Remove border */
+      outline: none; /* Remove outline */
+    }
+    
+    #modeButton:hover {
+      background: #45a049; /* Darker green color on hover */
+    }
+  </style>
+
+  <div class="container">
+    <!-- Video and Canvas elements -->
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas" width="640" height="360"></canvas>
+
+    <!-- Image container with border-radius -->
+    <div>
+      <img id="client" class="video" src="https://picsum.photos/640/360" alt="screen" />
     </div>
-    
-    <div class="content">
-    
-        <div class="webcam">
-    
-        </div>
-    
+
+    <!-- Button for mode switching -->
+    <div>
+      <button id="modeButton" onclick="Mode()">Start</button>
     </div>
+  </div>
 {% endblock %}
