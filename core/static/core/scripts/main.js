@@ -2,16 +2,37 @@ const context = canvas.getContext("2d");
 const video = document.getElementById("video");
 const img = document.getElementById("client");
 const ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+const uuid = generateUUID();
 let mode = true;
 
 video.width = 640;
 video.height = 360;
 
+
+// generate a uuid for each client so that they can establish their own websocket connection
+function generateUUID() {
+  const hexDigits = "0123456789abcdef";
+
+  const getRandomHex = () => {
+    return Math.floor(Math.random() * 16).toString(16);
+  };
+
+  const sections = [8, 4, 4, 4, 12];
+
+  const uuid = sections
+    .map((section) => {
+      return Array.from({ length: section }, getRandomHex).join("");
+    })
+    .join("-");
+
+  return uuid;
+}
+
 function Mode() {
   if (mode) {
     mode = false;
     const ws = new WebSocket(
-      `${ws_scheme}://${window.location.host}/ws/stream/`
+      `${ws_scheme}://${window.location.host}/ws/stream/${uuid}/`
     );
     ws.onopen = (event) => {
       console.log("WebSocket connected!!!");

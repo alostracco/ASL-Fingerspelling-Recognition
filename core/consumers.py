@@ -9,24 +9,27 @@ import asyncio
 from channels.exceptions import StopConsumer
 import mediapipe as mp
 
-RECTANGLE_SIZE = 30
-model = ASLModel()
-# model = model_base.load_model()
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands(max_num_hands=1)
+RECTANGLE_SIZE = 20
 
 
 class VideoStreamConsumer(AsyncWebsocketConsumer):
     async def connect(self):
+        self.prev_predicted_label = "Scanning"
+        self.count = 0
+        self.model = ASLModel()
+        mp_hands = mp.solutions.hands
+        self.hands = mp_hands.Hands(max_num_hands=1)
         self.loop = asyncio.get_running_loop()
         await self.accept()
 
     async def disconnect(self, close_code):
+        self.hands.close()
         self.stop = True
         raise StopConsumer()
 
     async def receive(self, bytes_data):
         if not (bytes_data):
+            # self.hands.close()
             print("Closed connection")
             await self.close()
         else:
@@ -41,7 +44,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
 
             h, w, c = self.frame.shape
 
-            result = hands.process(self.frame)
+            result = self.hands.process(self.frame)
             hand_landmarks = result.multi_hand_landmarks
 
             if hand_landmarks:
@@ -70,28 +73,46 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                         (0, 255, 0),
                         2,
                     )
+                    if self.count > 10:
+                        self.count = 0
+                        try:
+                            img_crop = self.frame[
+                                y_min - RECTANGLE_SIZE : y_max + RECTANGLE_SIZE,
+                                x_min - RECTANGLE_SIZE : x_max + RECTANGLE_SIZE,
+                            ]
+                            img_crop = Image.fromarray(np.uint8(img_crop))
+                            img_crop = img_crop.resize(
+                                (self.model.IMAGE_RES, self.model.IMAGE_RES)
+                            )
+                            img_crop = np.array(img_crop)
+                            img_crop = np.fliplr(img_crop)
+                            img_crop = np.array(img_crop[:, :, ::-1], dtype="float32")
+                            img_crop = img_crop / 255
+                            img_crop = img_crop.reshape(
+                                (1, self.model.IMAGE_RES, self.model.IMAGE_RES, 3)
+                            )
 
-                    try:
-                        img_crop = self.frame[
-                            y_min - RECTANGLE_SIZE : y_max + RECTANGLE_SIZE,
-                            x_min - RECTANGLE_SIZE : x_max + RECTANGLE_SIZE,
-                        ]
-                        img_crop = Image.fromarray(np.uint8(img_crop))
-                        img_crop = img_crop.resize((model.IMAGE_RES, model.IMAGE_RES))
-                        img_crop = np.array(img_crop)
-                        img_crop = np.fliplr(img_crop)
-                        img_crop = np.array(img_crop[:, :, ::-1], dtype="float32")
-                        img_crop = img_crop / 255
-                        img_crop = img_crop.reshape(
-                            (1, model.IMAGE_RES, model.IMAGE_RES, 3)
-                        )
-
-                        predict_test = model.model.predict(img_crop)
-                        predicted_label = np.argmax(predict_test)
-
+                            predict_test = self.model.model.predict(img_crop)
+                            predicted_label = np.argmax(predict_test)
+                            self.prev_predicted_label = self.model.lookup[
+                                str(predicted_label)
+                            ]
+                            cv2.putText(
+                                self.frame,
+                                f"Label: {self.model.lookup[str(predicted_label)]}",
+                                # f"Label: {model.lookup.values()}",
+                                (20, 60),
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                0.9,
+                                (36, 255, 12),
+                                2,
+                            )
+                        except Exception as e:
+                            print(f"Error: {e}")
+                    else:
                         cv2.putText(
                             self.frame,
-                            f"Label: {model.lookup[str(predicted_label)]}",
+                            f"Label: {self.prev_predicted_label}",
                             # f"Label: {model.lookup.values()}",
                             (20, 60),
                             cv2.FONT_HERSHEY_SIMPLEX,
@@ -99,13 +120,10 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                             (36, 255, 12),
                             2,
                         )
-                    except Exception as e:
-                        print(f"Error: {e}")
+                        self.count += 1
 
             self.buffer_img = await self.loop.run_in_executor(
                 None, cv2.imencode, ".jpeg", self.frame
             )
             self.b64_img = base64.b64encode(self.buffer_img[1]).decode("utf-8")
-            # Send the base64 encoded image back to the client
-            await asyncio.sleep(0.1)
             await self.send(self.b64_img)
