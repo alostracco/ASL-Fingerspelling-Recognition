@@ -24,12 +24,19 @@
 <div class="content">
 
     <div class="webcam">
-        <div class="recording-started"></div>
+        <!-- Video and Canvas elements -->
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas" width="640" height="360"></canvas>
 
-        <div class="recorder">
-
+        <!-- Image container with border-radius -->
+        <div>
+            <img id="client" class="video" src="https://picsum.photos/640/360" alt="Placeholder Image"/>
         </div>
 
+        <!-- Button for mode switching -->
+        <div>
+            <button class="start-video-button" id="modeButton" onclick="Mode()">Start</button>
+        </div>
     </div>
 
     <div class="text-display">

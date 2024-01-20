@@ -15,14 +15,36 @@
 }
 
 .webcam {
+    position: relative;
     height: 50%;
     width: 50%;
-    background: black;
     border-radius: 50px;
     margin-top: 10px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    border-radius: 50px;
+}
+
+.start-video-button {
+    position: absolute;
+    bottom: 0;
+
+    background: #35BDA5;
+    border-radius: 15px;
+    border: 2px black solid;
+
+    font-family: "M PLUS 1p", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    font-size: large;
+
+}
+
+.start-video-button:hover {
+    background: #45c2c2;
 }
 
 .recording-started {
