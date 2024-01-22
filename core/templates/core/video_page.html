@@ -1,79 +1,54 @@
 {% extends 'core/base.html' %}
 
-{% block title %}
-  Video Page
+{% block title %}Home Page{% endblock %}
+{% block additional_head %}
+<!-- Add this line at the beginning -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/styles/converterStyles.css' %}"/>
+<link rel="stylesheet" href="{% static 'core/styles/styles.css' %}"/>
 {% endblock %}
 
 {% block content %}
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f5f5f5;
-    }
-    
-    .container {
-      text-align: center;
-      margin-top: 50px;
-    }
-    
-    #video {
-      display: none;
-      max-width: 100%;
-    }
-    
-    #canvas {
-      display: none;
-      max-width: 100%;
-    }
-    
-    #client {
-      border-radius: 10px;
-      margin-top: 20px;
-      max-width: 100%;
-    }
-    
-    #modeButton {
-      width: 15vmin;
-      height: auto;
-      font-size: 4vmin;
-      border-radius: 25px;
-      background: #4caf50;
-      color: #fff;
-      cursor: pointer;
-      margin-top: 20px;
-      transition: background 0.3s ease-in-out;
-      border: none;
-      outline: none;
-    }
-    
-    #modeButton:hover {
-      background: #45a049;
-    }
-    
-    @media only screen and (max-width: 600px) {
-      /* Responsive styles for smaller screens */
-      .container {
-        margin-top: 20px;
-      }
-      #modeButton {
-        font-size: 3vmin;
-      }
-    }
-  </style>
+{% load static %}
+<div class="content">
 
-  <div class="container">
-    <!-- Video and Canvas elements -->
-    <video id="video" autoplay playsinline></video>
-    <canvas id="canvas" width="640" height="360"></canvas>
+    <div class="webcam">
+        <!-- Video and Canvas elements -->
+        <video class="video" id="video" autoplay playsinline></video>
+        <canvas class="canvas" id="canvas" width="640" height="360"></canvas>
 
-    <!-- Image container with border-radius -->
-    <div>
-      <img id="client" class="video" src="https://picsum.photos/640/360" alt="Placeholder Image" />
+        <!-- Image container with border-radius -->
+        <div>
+            <img id="client" class="video" src="https://picsum.photos/640/360" alt="Placeholder Image"/>
+        </div>
+
+        <!-- Button for mode switching -->
+        <div>
+            <button class="start-video-button" id="modeButton" onclick="Mode()">Start</button>
+        </div>
     </div>
 
-    <!-- Button for mode switching -->
-    <div>
-      <button id="modeButton" onclick="Mode()">Start</button>
+    <div class="text-display">
+        <div class="reset">
+            <p>Output: </p>
+            <button class="reset-button" type="button" onclick="">Reset</button>
+        </div>
+
+        <div class="text-box">
+            <p>This is where the text will be displayed akldnoiauwhdouiahdoipwah dopawhdoipuah d awhodwopadhiopuawhdip
+                uawhdipuawhdiupawhiuda daw dw adadwadlad awdaw dl kahfoaesfhjoaesifjsaep fasepifjeasiopfjsaipofj
+                asefjaes'fli asjfoisajfsaoif as
+                efjsapifjesapfjspfjasipfjsaipfjaspf
+                a esfpisajfipasjfaiosejfas aspjfedosaifjoiasfjoasifjsaoif jsaoifjsaofjasoefjoaesfjas ofieasfsaefsaeif
+                efiojesaif
+                as
+                saefjsipafjasoifjisaofjsafsaf asfopesj fsepfi</p>
+        </div>
+
+        <div class="copy">
+            <img class="copy-button" height="48px" width="48px" src="{% static 'core/images/copy.png' %}" onclick="">
+        </div>
     </div>
-  </div>
+
+</div>
 {% endblock %}
