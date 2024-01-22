@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .menu {
     position: relative;
     display: flex;
@@ -25,7 +29,7 @@
 
 }
 
-img[src="download.jpg"] {
+.logo {
     max-width: 300px;
     margin-right: auto;
     margin-left: 10px;
@@ -43,6 +47,8 @@ img[src="download.jpg"] {
     font-family: sans-serif;
     margin-top: auto;
     margin-bottom: auto;
+    text-decoration: none;
+    color: black;
 }
 
 
