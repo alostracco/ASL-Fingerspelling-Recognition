@@ -1,45 +1,46 @@
 <!-- core/about_us.html -->
 
-{% extends 'core/base.html' %} {% block title %}About Us{% endblock %} 
+{% extends 'core/base.html' %} {% block title %}About Us{% endblock %}
 {% block additional_head %}
 <!-- Add this line at the beginning -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'core/styles/aboutPageStyles.css' %}" />
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/styles/styles.css' %}">
+<link rel="stylesheet" href="{% static 'core/styles/aboutPageStyles.css' %}"/>
 {% endblock %}
-{% block content %} 
+{% block content %}
 {% load static %}
 <div class="context">
-  <div class="container">
-      <!-- About Text -->
-      <div class="content-column">
-          <div class="text-box">
-              <h1>About Us</h1>
-              <p>This is the about us page content...write more description later</p>
-          </div>
-      </div>
+    <div class="container">
+        <!-- About Text -->
+        <div class="content-column">
+            <div class="text-box">
+                <h1>About Us</h1>
+                <p>This is the about us page content...write more description later</p>
+            </div>
+        </div>
 
-      <!-- Images Row -->
-      <div class="content-column">
-          <div class="person-box">
-              <img class="person-image developer-image" src="{% static 'core/images/person1.png' %}" alt="Person 1">
-              <div class="person-name">Developer 1</div>
-          </div>
+        <!-- Images Row -->
+        <div class="content-column">
+            <div class="person-box">
+                <img class="person-image developer-image" src="{% static 'core/images/person1.png' %}" alt="Person 1">
+                <div class="person-name">Developer 1</div>
+            </div>
 
-          <div class="person-box">
-              <img class="person-image developer-image" src="{% static 'core/images/person2.png' %}" alt="Person 2">
-              <div class="person-name">Developer 2</div>
-          </div>
+            <div class="person-box">
+                <img class="person-image developer-image" src="{% static 'core/images/person2.png' %}" alt="Person 2">
+                <div class="person-name">Developer 2</div>
+            </div>
 
-          <div class="person-box">
-              <img class="person-image  developer-image" src="{% static 'core/images/person3.png' %}" alt="Person 3">
-              <div class="person-name">Developer 3</div>
-          </div>
+            <div class="person-box">
+                <img class="person-image  developer-image" src="{% static 'core/images/person3.png' %}" alt="Person 3">
+                <div class="person-name">Developer 3</div>
+            </div>
 
-          <div class="person-box">
-              <img class="person-image  developer-image" src="{% static 'core/images/person.png' %}" alt="Person 4">
-              <div class="person-name">Developer 4</div>
-          </div>
-      </div>
-  </div>
+            <div class="person-box">
+                <img class="person-image  developer-image" src="{% static 'core/images/person4.png' %}" alt="Person 4">
+                <div class="person-name">Developer 4</div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

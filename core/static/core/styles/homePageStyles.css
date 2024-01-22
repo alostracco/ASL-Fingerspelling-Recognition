@@ -1,6 +1,4 @@
 /* homePageStyles.css */
-
-/* Container for main website display */
 .container {
     position: relative;
     text-align: center;
@@ -10,7 +8,7 @@
     justify-content: center;
 }
 
-.container img[src="background.jpg"] {
+.background-image {
     opacity: 0.65;
     position: absolute;
     width: 100%;
