@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Linden+Hill:ital@0;1&family=M+PLUS+1p:wght@400;800&display=swap');
+
+/* ContactPageStyles.css */
+
+.context {
+    position: relative;
+    background-color: rgba(241, 235, 233, 0.65);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    background-color: rgba(241, 235, 233, 0.65);
+    height: 100vh;
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    font-family: "M PLUS 1p", sans-serif;
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.text-box {
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}

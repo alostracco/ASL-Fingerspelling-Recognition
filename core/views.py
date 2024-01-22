@@ -127,3 +127,6 @@ def video_page(request):
 
 def about_us(request):
     return render(request, "core/about_us.html")
+
+def contact(request):
+    return render(request, "core/contact.html")
