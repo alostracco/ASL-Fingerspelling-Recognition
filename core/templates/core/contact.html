@@ -3,8 +3,9 @@
 {% extends 'core/base.html' %} {% block title %}Contact{% endblock %}
 {% block additional_head %}
 <!-- Seperator things-->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'core/styles/contactPageStyles.css' %}" />
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/styles/contactPageStyles.css' %}"/>
+<link rel="stylesheet" href="{% static 'core/styles/styles.css' %}">
 {% endblock %}
 {% block content %}
 {% load static %}
@@ -19,9 +20,11 @@
                 <!-- Contact Row -->
                 <div class="contact-row">
                     <a target="_blank" href="https://google.com"><img height="100" width="100" class="contact-image"
-                                                                      src="email.png" alt="Email"></a>
+                                                                      src="{% static 'core/images/email.png' %}"
+                                                                      alt="Email"></a>
                     <a target="_blank" href="https://google.com"><img height="100" width="100" class="contact-image"
-                                                                      src="linkedin.png" alt="Linkedin"></a>
+                                                                      src="{% static 'core/images/linkedin.png' %}"
+                                                                      alt="Linkedin"></a>
                 </div>
             </div>
         </div>
@@ -29,6 +32,4 @@
     </div>
 
 </div>
-</body>
-</html>
-
+{% endblock %}
