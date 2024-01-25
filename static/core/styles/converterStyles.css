@@ -1,0 +1,17 @@
+/* aboutPageStyles.css */
+.content {
+    background-color: rgba(241, 235, 233, 0.65);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.webcam {
+    height: 50%;
+    width: 50%;
+    background: black;
+    margin-bottom: 25%;
+    border-radius: 50px;
+}
