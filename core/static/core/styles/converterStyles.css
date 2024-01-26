@@ -22,12 +22,6 @@
   margin-top: 10px;
 }
 
-/*.video {*/
-/*    width: 0;*/
-/*    height: 0;*/
-/*    z-index: 1;*/
-/*}*/
-
 #video {
   display: none;
   max-width: 100%;
@@ -127,6 +121,7 @@
   font-style: normal;
 
   overflow-y: scroll;
+  overflow-wrap: break-word;
   border-left: 2px black dot-dash;
 }
 

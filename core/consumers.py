@@ -1,4 +1,6 @@
 # consumers.py
+import json
+
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .ASLModel import ASLModel
 import cv2
@@ -33,6 +35,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
             print("Closed connection")
             await self.close()
         else:
+            letter_output = ""
             self.frame = await self.loop.run_in_executor(
                 None,
                 cv2.imdecode,
@@ -77,9 +80,9 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                         self.count = 0
                         try:
                             img_crop = self.frame[
-                                y_min - RECTANGLE_SIZE : y_max + RECTANGLE_SIZE,
-                                x_min - RECTANGLE_SIZE : x_max + RECTANGLE_SIZE,
-                            ]
+                                       y_min - RECTANGLE_SIZE: y_max + RECTANGLE_SIZE,
+                                       x_min - RECTANGLE_SIZE: x_max + RECTANGLE_SIZE,
+                                       ]
                             img_crop = Image.fromarray(np.uint8(img_crop))
                             img_crop = img_crop.resize(
                                 (self.model.IMAGE_RES, self.model.IMAGE_RES)
@@ -97,6 +100,8 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                             self.prev_predicted_label = self.model.lookup[
                                 str(predicted_label)
                             ]
+
+                            letter_output = self.model.lookup[str(predicted_label)]
                             cv2.putText(
                                 self.frame,
                                 f"Label: {self.model.lookup[str(predicted_label)]}",
@@ -126,4 +131,10 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                 None, cv2.imencode, ".jpeg", self.frame
             )
             self.b64_img = base64.b64encode(self.buffer_img[1]).decode("utf-8")
-            await self.send(self.b64_img)
+
+            # sending data as a JSON for both the letter and the image
+            data_to_send = {
+                "letter": letter_output,
+                "image": self.b64_img,
+            }
+            await self.send(json.dumps(data_to_send))

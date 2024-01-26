@@ -38,7 +38,14 @@ function Mode() {
       console.log("WebSocket connected!!!");
     };
     ws.onmessage = (event) => {
-      frameUpdate = event.data;
+      const data = JSON.parse(event.data);
+      const letterOutput = data["letter"];
+
+      if (letterOutput !== "NOTHING" && letterOutput !== "" && letterOutput !== "Scanning") {
+        document.getElementById("output-text").textContent += letterOutput;
+      }
+
+      frameUpdate = data["image"];
       img.src = "data:image/jpeg;base64," + frameUpdate;
     };
     ws.onclose = (event) => {
