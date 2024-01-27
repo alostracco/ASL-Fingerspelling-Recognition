@@ -41,8 +41,18 @@ function Mode() {
       const data = JSON.parse(event.data);
       const letterOutput = data["letter"];
 
+      let outputTextBox = document.getElementById("output-text");
       if (letterOutput !== "NOTHING" && letterOutput !== "" && letterOutput !== "Scanning") {
-        document.getElementById("output-text").textContent += letterOutput;
+
+        if (letterOutput === "del" && outputTextBox.textContent.length > 0) {
+          outputTextBox.textContent = outputTextBox.textContent.slice(0, -1);
+
+        } else if (letterOutput === "space") {
+          outputTextBox.textContent += " ";
+
+        } else {
+          outputTextBox.textContent += letterOutput;
+        }
       }
 
       frameUpdate = data["image"];
@@ -82,4 +92,20 @@ function Mode() {
     video.srcObject.getVideoTracks()[0].stop();
     video.srcObject = null;
   }
+}
+
+// Resetting the output text box
+function resetTextOutput() {
+  let outputTextBox = document.getElementById("output-text");
+  outputTextBox.textContent = "";
+}
+
+// Copying the output text to clipboard
+async function copyText() {
+  let outputTextBox = document.getElementById("output-text");
+  await navigator.clipboard.writeText(outputTextBox.textContent);
+
+  //todo: replace with a overlay at bottom
+  alert("Text copied to clipboard");
+
 }

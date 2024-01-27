@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Linden+Hill:ital@0;1&family=M+PLUS+1p:wght@400;800&display=swap");
 /* aboutPageStyles.css */
+* > button {
+    background: #35bda5;
+}
+
+* > button:hover {
+    background: #51e5e5;
+}
+
+* > button:active {
+    background: #5dffff
+}
 .content {
   background-color: rgba(241, 235, 233, 0.65);
   height: 100vh;
@@ -37,11 +48,10 @@
   border-radius: 10px;
   margin-top: 20px;
   max-width: 100%;
+  border: black 2px solid;
 }
 
 .start-video-button {
-
-  background: #35bda5;
   border-radius: 15px;
   border: 2px black solid;
 
@@ -52,24 +62,7 @@
 }
 
 .start-video-button:hover {
-  background: #45c2c2;
-}
 
-.recording-started {
-  width: 30px;
-  height: 30px;
-  margin-top: 5px;
-  border-radius: 100%;
-  background: red;
-  align-self: flex-start;
-}
-
-.recorder {
-  width: 70px;
-  height: 70px;
-  border-radius: 100%;
-  background: red;
-  margin-bottom: 5px;
 }
 
 .text-display {
@@ -99,7 +92,6 @@
 }
 
 .reset > button {
-  background: #35bda5;
   border-radius: 15px;
   border: 2px black solid;
   width: 100%;
@@ -128,6 +120,16 @@
 .copy {
   flex-basis: 7%;
   margin-left: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   align-self: flex-end;
+}
+
+.copy > img {
+  border-radius: 100%;
+  padding: 10px;
+  overflow: visible;
+}
+
+.copy > img:hover {
+  background: rgba(200, 200, 200, .6);
 }

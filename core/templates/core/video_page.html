@@ -31,7 +31,7 @@
     <div class="text-display">
         <div class="reset">
             <p>Output: </p>
-            <button class="reset-button" type="button" onclick="">Reset</button>
+            <button class="reset-button" type="button" onclick="resetTextOutput()">Reset</button>
         </div>
 
         <div class="text-box">
@@ -39,7 +39,7 @@
         </div>
 
         <div class="copy">
-            <img class="copy-button" height="48px" width="48px" src="{% static 'core/images/copy.png' %}" onclick="">
+            <img class="copy-button" height="48px" width="48px" onclick="copyText()" src="{% static 'core/images/copy.png' %}">
         </div>
     </div>
 
