@@ -30,6 +30,9 @@ function generateUUID() {
 
 function Mode() {
   if (mode) {
+    // changing the button text
+    document.getElementById("modeButton").textContent = "Stop";
+
     mode = false;
     const ws = new WebSocket(
       `${ws_scheme}://${window.location.host}/ws/stream/${uuid}/`
@@ -42,18 +45,27 @@ function Mode() {
       const letterOutput = data["letter"];
 
       let outputTextBox = document.getElementById("output-text");
-      if (letterOutput !== "NOTHING" && letterOutput !== "" && letterOutput !== "Scanning") {
+      switch (letterOutput) {
+      case "NOTHING":
+      case "":
+      case "Scanning":
+        // Do nothing
+        break;
 
-        if (letterOutput === "del" && outputTextBox.textContent.length > 0) {
+      case "DEL":
+        if (outputTextBox.textContent.length > 0) {
           outputTextBox.textContent = outputTextBox.textContent.slice(0, -1);
-
-        } else if (letterOutput === "space") {
-          outputTextBox.textContent += " ";
-
-        } else {
-          outputTextBox.textContent += letterOutput;
         }
-      }
+        break;
+
+      case "SPACE":
+        outputTextBox.textContent += " ";
+        break;
+
+      default:
+        outputTextBox.textContent += letterOutput;
+        break;
+    }
 
       frameUpdate = data["image"];
       img.src = "data:image/jpeg;base64," + frameUpdate;
@@ -87,6 +99,9 @@ function Mode() {
         });
     }
   } else {
+    // changing the button text
+    document.getElementById("modeButton").textContent = "Start";
+
     mode = true;
     video.pause();
     video.srcObject.getVideoTracks()[0].stop();
