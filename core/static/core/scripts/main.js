@@ -115,20 +115,9 @@ function resetTextOutput() {
     outputTextBox.textContent = "";
 }
 
-// Copying the output text to clipboard
-async function copyText() {
-    let outputTextBox = document.getElementById("output-text");
-    await navigator.clipboard.writeText(outputTextBox.textContent);
-
-    //todo: replace with a overlay at bottom
-    alert("Text copied to clipboard");
-
-}
-
 // toggling the popup menu
 function togglePopup() {
     let popup = document.getElementById("popup-menu");
-
 
     if (popup.style.display === "none") {
         popup.style.display = "flex";
@@ -137,11 +126,39 @@ function togglePopup() {
     }
 }
 
+// Copying the output text to clipboard
+async function copyText() {
+    let outputTextBox = document.getElementById("output-text");
+    await navigator.clipboard.writeText(outputTextBox.textContent);
+
+    //todo: replace with a overlay at bottom
+    alert("Text copied to clipboard");
+}
+
+function textToSpeech() {
+    let outputTextBox = document.getElementById("output-text").textContent;
+    let utterance = new SpeechSynthesisUtterance(outputTextBox);
+    speechSynthesis.speak(utterance);
+}
+
+
+function translate() {
+    return;
+}
+
+function showGestures() {
+    return;
+}
+
+function showFeedback() {
+    return;
+}
+
 // Close the popup if the user clicks outside of it
 document.addEventListener('click', function (event) {
     let isClickInside = document.getElementById('popup-menu').contains(event.target);
     let isPopupVisible = document.getElementById('popup-menu').style.display === "flex";
-    let isClickOnImage = document.querySelector('.copy-button').isSameNode(event.target);
+    let isClickOnImage = document.querySelector('.options-button').isSameNode(event.target);
 
     if (!isClickInside && !isClickOnImage && isPopupVisible) {
         togglePopup();

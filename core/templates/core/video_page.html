@@ -38,21 +38,38 @@
             <p id="output-text"></p>
         </div>
 
-        <div class="copy">
+        <div class="options">
             <p>?</p>
-            <img class="copy-button" height="48px" width="48px" onclick="togglePopup()" src="{% static 'core/images/threedots.png' %}">
-            <div id="popup-menu">
-                <button onclick="copyText()">Copy</button>
-                <button>Text to Speech</button>
-                <button>Translation</button>
-                <button>Gestures</button>
-                <button>Feedback</button>
+            <img class="options-button" height="48px" width="48px" onclick="togglePopup()"
+                 src="{% static 'core/images/threedots.png' %}">
+
+            <!-- Display none has to be here or else you have to click twice to show popup menu -->
+            <div style="display: none;" id="popup-menu">
+                <button onclick="copyText()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/copy.png' %}"> Copy
+                </button>
+
+                <button onclick="textToSpeech()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/text-to-speech.png' %}"> Text To Speech
+                </button>
+
+                <button onclick="translate()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/translate.png' %}"> Translate
+                </button>
+
+                <button onclick="showGestures()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/gesture.png' %}"> Gestures
+                </button>
+
+                <button onclick="showFeedback()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/feedback.png' %}"> Feedback
+                </button>
             </div>
         </div>
     </div>
 
-<!--todo: add cheat sheet that shows all the available letters with their associated sign. Make sure to include
-special characters such as space and del.-->
+    <!--todo: add cheat sheet that shows all the available letters with their associated sign. Make sure to include
+    special characters such as space and del.-->
 
 </div>
 {% endblock %}
