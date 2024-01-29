@@ -40,7 +40,14 @@
 
         <div class="copy">
             <p>?</p>
-            <img class="copy-button" height="48px" width="48px" onclick="copyText()" src="{% static 'core/images/copy.png' %}">
+            <img class="copy-button" height="48px" width="48px" onclick="togglePopup()" src="{% static 'core/images/threedots.png' %}">
+            <div id="popup-menu">
+                <button onclick="copyText()">Copy</button>
+                <button>Text to Speech</button>
+                <button>Translation</button>
+                <button>Gestures</button>
+                <button>Feedback</button>
+            </div>
         </div>
     </div>
 
