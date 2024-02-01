@@ -40,13 +40,15 @@
         </div>
 
         <div class="options">
-            <p>?</p>
+            <p onmouseout="closeHelp()" onmouseover="showHelp()">?</p>
             <div style="display: none" id="help-menu">
-                <p>Click the "Start" button to begin translating ASL to text.</p>
-                <p>Click the "Stop" button to stop translating ASL to text.</p>
-                <p>Click the "Reset" button to clear the text output.</p>
+                <h3>Help</h3>
+                <p>&rarr;To begin, make sure your webcam is plugged in and click the start button. Make sure you give permissions
+                    to the website to access your webcam</p>
+                <p>&rarr;Put your hand in front of you until you see the "scanning" text on your screen. Start making ASL
+                gestures.</p>
+                <p>&rarr;More options and commands are available if you click the three dots below!</p>
             </div>
-
 
             <img class="options-button" height="48px" width="48px" onclick="togglePopup()"
                  src="{% static 'core/images/threedots.png' %}">

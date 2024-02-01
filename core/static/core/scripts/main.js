@@ -175,3 +175,16 @@ document.addEventListener('click', function (event) {
         togglePopup();
     }
 });
+
+
+// showing help menu
+function showHelp() {
+    let helpMenu = document.getElementById("help-menu");
+    helpMenu.style.display = "flex";
+}
+
+// closing help menu
+function closeHelp() {
+    let helpMenu = document.getElementById("help-menu");
+    helpMenu.style.display = "none";
+}
