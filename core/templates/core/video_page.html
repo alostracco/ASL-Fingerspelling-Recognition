@@ -32,6 +32,7 @@
         <div class="reset">
             <p>Output: </p>
             <button class="reset-button" type="button" onclick="resetTextOutput()">Reset</button>
+            <button class="reset-button" type="button" onclick="delLetter()">Delete</button>
         </div>
 
         <div class="text-box">
@@ -40,9 +41,15 @@
 
         <div class="options">
             <p>?</p>
+            <div style="display: none" id="help-menu">
+                <p>Click the "Start" button to begin translating ASL to text.</p>
+                <p>Click the "Stop" button to stop translating ASL to text.</p>
+                <p>Click the "Reset" button to clear the text output.</p>
+            </div>
+
+
             <img class="options-button" height="48px" width="48px" onclick="togglePopup()"
                  src="{% static 'core/images/threedots.png' %}">
-
             <!-- Display none has to be here or else you have to click twice to show popup menu -->
             <div style="display: none;" id="popup-menu">
                 <button onclick="copyText()">
@@ -61,9 +68,15 @@
                     <img class="menu-image" src="{% static 'core/images/popup-menu/gesture.png' %}"> Gestures
                 </button>
 
+                <button onclick="save()">
+                    <img class="menu-image" src="{% static 'core/images/popup-menu/save.png' %}"> Save
+                </button>
+
                 <button onclick="showFeedback()">
                     <img class="menu-image" src="{% static 'core/images/popup-menu/feedback.png' %}"> Feedback
                 </button>
+
+
             </div>
         </div>
     </div>

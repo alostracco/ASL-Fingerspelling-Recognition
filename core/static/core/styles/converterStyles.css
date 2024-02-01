@@ -97,11 +97,13 @@
     border: 2px black solid;
     width: 100%;
     height: 3em;
+    margin-bottom: 10px;
 
     font-family: "M PLUS 1p", sans-serif;
     font-weight: 800;
     font-style: normal;
     font-size: 1em;
+
 }
 
 .text-box {
@@ -205,7 +207,7 @@
 }
 
 #popup-menu > button:active {
-
+    background: #999;
 }
 
 .menu-image {

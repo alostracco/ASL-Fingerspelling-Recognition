@@ -143,15 +143,26 @@ function textToSpeech() {
 
 
 function translate() {
-    return;
+
 }
 
 function showGestures() {
-    return;
+
 }
 
 function showFeedback() {
-    return;
+
+}
+
+function save() {
+
+}
+
+function delLetter() {
+    let outputTextBox = document.getElementById("output-text");
+    if (outputTextBox.textContent.length > 0) {
+        outputTextBox.textContent = outputTextBox.textContent.slice(0, -1);
+    }
 }
 
 // Close the popup if the user clicks outside of it
