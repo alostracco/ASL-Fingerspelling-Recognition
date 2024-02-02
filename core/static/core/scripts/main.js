@@ -186,5 +186,9 @@ function showHelp() {
 // closing help menu
 function closeHelp() {
     let helpMenu = document.getElementById("help-menu");
-    helpMenu.style.display = "none";
+    helpMenu.style.animation = "fadeOutDown 0.3s ease-out forwards";
+    setTimeout(function() {
+        helpMenu.style.display = "none";
+        helpMenu.style.animation = "fadeInUp 0.3s ease-out forwards";
+    }, 300); // this should match the duration of your animation
 }

@@ -163,12 +163,12 @@
 #popup-menu {
     position: absolute;
     bottom: 80px;
+    z-index: 3;
 
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     padding: 12px 10px;
-    z-index: 1;
     border-radius: 10%;
     border: black 2px solid;
 
@@ -244,6 +244,19 @@
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
 }
 
 #help-menu > * {
