@@ -115,6 +115,7 @@ class VideoStreamConsumer(AsyncWebsocketConsumer):
                         except Exception as e:
                             print(f"Error: {e}")
                     else:
+                        letter_output = ""
                         cv2.putText(
                             self.frame,
                             f"Label: {self.prev_predicted_label}",

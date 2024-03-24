@@ -143,15 +143,26 @@ function textToSpeech() {
 
 
 function translate() {
-    return;
+
 }
 
 function showGestures() {
-    return;
+
 }
 
 function showFeedback() {
-    return;
+
+}
+
+function save() {
+
+}
+
+function delLetter() {
+    let outputTextBox = document.getElementById("output-text");
+    if (outputTextBox.textContent.length > 0) {
+        outputTextBox.textContent = outputTextBox.textContent.slice(0, -1);
+    }
 }
 
 // Close the popup if the user clicks outside of it
@@ -164,3 +175,20 @@ document.addEventListener('click', function (event) {
         togglePopup();
     }
 });
+
+
+// showing help menu
+function showHelp() {
+    let helpMenu = document.getElementById("help-menu");
+    helpMenu.style.display = "flex";
+}
+
+// closing help menu
+function closeHelp() {
+    let helpMenu = document.getElementById("help-menu");
+    helpMenu.style.animation = "fadeOutDown 0.3s ease-out forwards";
+    setTimeout(function() {
+        helpMenu.style.display = "none";
+        helpMenu.style.animation = "fadeInUp 0.3s ease-out forwards";
+    }, 300); // this should match the duration of your animation
+}
