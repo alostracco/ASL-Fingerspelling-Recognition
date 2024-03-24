@@ -1,127 +1,61 @@
-/* core/styles/styles.css */
-
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(180deg, #f9f9f9 0%, #e0e0e0 100%);
+}
+
+.menu {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    color: #333; /* Set text color to a dark shade for better visibility on light background */
+    flex-direction: row;
+    gap: 7%;
+    justify-content: flex-end;
 }
 
-nav {
-    background: linear-gradient(90deg, #333 0%, #1a1a1a 100%);
-    padding: 1rem 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Increased shadow for a modern touch */
+.menu::before {
+    position: absolute;
+    content: "";
+    width: 46%;
+    height: 2px; /* Adjust the height of the underline */
+    background-color: #000; /* Adjust the color of the underline */
+    bottom: 0; /* Adjust the distance from the text */
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 10;
-    display: flex;
-    justify-content: space-between; /* Adjusted spacing for toggle button */
-    align-items: center; /* Center items vertically */
-}
-
-nav li {
-    margin-right: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add a transition for smoother hover effect */
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: #fff;
-    transform: scale(1.05); /* Slightly increase scaling on hover for a subtle effect */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Increased shadow on hover for depth */
-}
-
-.toggle-dark-mode {
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-}
-
-.toggle-dark-mode:hover {
-    color: #007BFF;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); /* Increased shadow for a modern touch */
-    margin-bottom: 4rem;
-    animation: fadeInUp 1s ease;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-footer {
-    background: linear-gradient(90deg, #333 0%, #1a1a1a 100%);
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
-    position: fixed;
+.curve {
+    position: absolute;
+    z-index: 10;
+    flex-shrink: 0;
+    justify-self: flex-end;
+    right: 46%;
     bottom: 0;
-    width: 100%;
-    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.2); /* Increased shadow for a modern touch */
-    animation: slideInUp 1s ease;
+
 }
 
-@keyframes slideInUp {
-    from {
-        transform: translateY(100%);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
+.logo {
+    max-width: 300px;
+    margin-right: auto;
+    margin-left: 10px;
 
-/* Add styles for the "About Us" page */
-.about-us {
-    text-align: center;
-    margin-top: 2rem;
-}
-
-/* Improve general styling for buttons and links */
-button, a {
+    /*width: auto used to resize image proportionally*/
+    height: 80px;
+    width: auto;
     cursor: pointer;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-button:hover, a:hover {
-    background-color: #007BFF;
-    color: #fff;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Increased shadow on hover for depth */
+.menu-button {
+    cursor: pointer;
+    font-size: 1.4em;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    color: black;
+}
+
+
+.menu-button:last-child {
+    margin-right: 30px;
+}
+
+.menu-button:hover {
+    color: #198fd3;
 }
