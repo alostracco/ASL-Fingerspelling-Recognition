@@ -1,6 +1,5 @@
-<!-- core/about_us.html -->
-
-{% extends 'core/base.html' %} {% block title %}About Us{% endblock %}
+{% extends 'core/base.html' %}
+{% block title %}About Us{% endblock %}
 {% block additional_head %}
 <!-- Add this line at the beginning -->
 {% load static %}
@@ -32,27 +31,30 @@
             </div>
         </div>
         
-
         <!-- Images Row -->
         <div class="content-column">
             <div class="person-box">
                 <img class="person-image developer-image" src="{% static 'core/images/person1.png' %}" alt="Arjun Sharma">
                 <div class="person-name">Arjun Sharma</div>
+                <a href="https://portfolio-arjunsharma.com" class="person-portfolio" target="_blank">Portfolio</a>
             </div>
 
             <div class="person-box">
                 <img class="person-image developer-image" src="{% static 'core/images/person2.png' %}" alt="Ariana Feng">
                 <div class="person-name">Ariana Feng</div>
+                <a href="https://arianafengart.wordpress.com/" class="person-portfolio" target="_blank">Portfolio</a>
             </div>
 
             <div class="person-box">
-                <img class="person-image  developer-image" src="{% static 'core/images/person3.png' %}" alt="Naveed">
+                <img class="person-image developer-image" src="{% static 'core/images/person3.png' %}" alt="Naveed">
                 <div class="person-name">Naveed</div>
+                <a href="https://mnaveedk.com/" class="person-portfolio" target="_blank">Portfolio</a>
             </div>
 
             <div class="person-box">
-                <img class="person-image  developer-image" src="{% static 'core/images/person4.png' %}" alt="Aiden">
+                <img class="person-image developer-image" src="{% static 'core/images/person4.png' %}" alt="Aiden">
                 <div class="person-name">Aiden</div>
+                <a href="https://portfolio-aiden.com" class="person-portfolio" target="_blank">Portfolio</a>
             </div>
         </div>
     </div>

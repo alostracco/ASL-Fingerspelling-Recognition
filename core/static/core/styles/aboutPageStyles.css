@@ -35,24 +35,34 @@ table {
 }
 
 table td {
-    padding: 8px;
+    padding: 5px;
 }
 
 .text-box {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
 }
 
 .person-box {
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     box-sizing: border-box;
+    width: 100px; 
+    height: 100vh;
 }
 
 .developer-image {
-    width: 150px;
-    height: 150px;
+    width: 100px;  
+    height: 100px; 
     object-fit: cover;
     border-radius: 20%;
 }
 
+.person-name {
+    margin-top: 10px;
+}
+
+.person-portfolio {
+    margin-top: 5px;
+    display: block;
+}
