@@ -22,19 +22,13 @@ This project focuses on American Sign Language (ASL) fingerspelling recognition.
    cd ASL-Fingerspelling-Recognition
    ```
 
-2. **Switch to the Backend Branch:**
-
-   ```bash
-   git checkout backend
-   ```
-
-3. **Create a Virtual Environment:**
+2. **Create a Virtual Environment:**
 
    ```bash
    python3.8 -m venv venv
    ```
 
-4. **Activate the Virtual Environment:**
+3. **Activate the Virtual Environment:**
 
    - On Windows:
 
@@ -48,13 +42,13 @@ This project focuses on American Sign Language (ASL) fingerspelling recognition.
      source venv/bin/activate
      ```
 
-5. **Install Requirements:**
+4. **Install Requirements:**
 
    ```bash
    pip install -r requirements.txt
    ```
 
-6. **Run Server:**
+5. **Run Server:**
 
    ```bash
    python manage.py runserver 8080
@@ -71,13 +65,7 @@ This project focuses on American Sign Language (ASL) fingerspelling recognition.
    cd ASL-Fingerspelling-Recognition
    ```
 
-2. **Switch to the Backend Branch:**
-
-   ```bash
-   git checkout backend
-   ```
-
-3. **Build and Start Docker Containers:**
+2. **Build and Start Docker Containers:**
 
    Ensure you have Docker and Docker Compose installed on your system. Then, in the project root directory, run:
 
